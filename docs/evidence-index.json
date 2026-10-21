@@ -1,0 +1,101 @@
+[
+  {
+    "id": "QA-01",
+    "source_alias": "历史小程序项目",
+    "file": "V3_PHASE1_ROOT_CAUSE.md",
+    "lines": "5–23, 81–109",
+    "sha256": "009eb35e35d906f4b801c33ed6b563313c70144013a79d03f6cc978259dc936d",
+    "lesson": "HTTP成功与语义正确分离；原文保存与结构化事实、前后端完成状态分别验证。",
+    "evidence_level": "已读取的历史文档或源码；非本次平台复测"
+  },
+  {
+    "id": "QA-02",
+    "source_alias": "历史小程序项目",
+    "file": "V3_PHASE1_QA.md",
+    "lines": "3–27",
+    "sha256": "c146b7e97d98129f2cd36ae1f79812d7e178f6c091a22785eba6de00d311ed2c",
+    "lesson": "历史隔离Cloud/页面控制器证据；合成输入不能证明真机视觉或真实经营效果。",
+    "evidence_level": "已读取的历史文档或源码；非本次平台复测"
+  },
+  {
+    "id": "QA-03",
+    "source_alias": "历史小程序项目",
+    "file": "qa.test.js",
+    "lines": "1–8",
+    "sha256": "0e83d8be639b776b2d5f3ec39417f43933f0b3900b9d4c18874873a13ed83d8d",
+    "lesson": "错误不跳转、重复点击、私有分享隔离、失败保留输入、离页迟到响应。",
+    "evidence_level": "已读取的历史文档或源码；非本次平台复测"
+  },
+  {
+    "id": "AI-01",
+    "source_alias": "历史小程序项目",
+    "file": "CODEBUDDY_TASKS.md",
+    "lines": "8–39, 61–79",
+    "sha256": "a0ab6e517e2a35f0cc0298987cc4bed80cf32fdd28e3ccf627b96b7f28d5af48",
+    "lesson": "原始开发任务要求可恢复流程与纯函数测试；支付闭环未完成不能当成已上线。",
+    "evidence_level": "已读取的历史文档或源码；非本次平台复测"
+  },
+  {
+    "id": "SHOP-01",
+    "source_alias": "历史商店项目",
+    "file": "storefront-qa.md",
+    "lines": "12–56",
+    "sha256": "12d4e50e7f7eba2135a88e09fccbca23d28b074dcf6ac92a7b063fc2d1879c6d",
+    "lesson": "多视口、购物车配件组合、已有静态错误基线、结账入口与付款区分。",
+    "evidence_level": "已读取的历史文档或源码；非本次平台复测"
+  },
+  {
+    "id": "SHOP-02",
+    "source_alias": "历史商店项目",
+    "file": "tracking-audit.md",
+    "lines": "3–19",
+    "sha256": "105d2b9a8ee7ca7736a7bde66563b3608a09d8c9ea3206d0b206d8f8f8cd0017",
+    "lesson": "多个追踪标识不能直接证明重复事件；追查管理归属与网络请求。",
+    "evidence_level": "已读取的历史文档或源码；非本次平台复测"
+  },
+  {
+    "id": "SHOP-03",
+    "source_alias": "历史商店项目",
+    "file": "POST_BOGO_CLEANUP_REPORT.md",
+    "lines": "21–40, 95–109",
+    "sha256": "ead4ce896c1c4d232479f65841d309395845a67addbaf02b74f0b93a5d17dbce",
+    "lesson": "本地促销清理与远程折扣、主题角色复核、预览发布分别验收；无权限停止上传。",
+    "evidence_level": "已读取的历史文档或源码；非本次平台复测"
+  },
+  {
+    "id": "AUTO-01",
+    "source_alias": "历史商店项目",
+    "file": "consent_test_report.md",
+    "lines": "3–30",
+    "sha256": "2113efc19145d23b0b5b5294425a5a1a8f86b9f38ec84312296cfb634f840b9a",
+    "lesson": "同意字段仅有设计不等于弃单事件已持久化；未验证前禁止启用外发。",
+    "evidence_level": "已读取的历史文档或源码；非本次平台复测"
+  },
+  {
+    "id": "CONTENT-01",
+    "source_alias": "历史内容档案",
+    "file": "README-文案合集索引.md",
+    "lines": "1–120",
+    "sha256": "060884b49e1cef8ff1225fce8a129f6fdcbee16e54e4ce1d3488b345f03a27ce",
+    "lesson": "可证实内容选题索引存在；不能将营销文案中的收益/效率主张作为经营数据。",
+    "evidence_level": "已读取的历史文档或源码；非本次平台复测"
+  },
+  {
+    "id": "WX-01",
+    "source_alias": "用户提供的公众号工具压缩包",
+    "file": "scripts/build-manual.mjs",
+    "lines": "完整文件",
+    "sha256": "63b22d127dcbdf8fdeb073eea96442dd3a3d8e1d9a918ec5b6ca5300f50e76e2",
+    "lesson": "渲染复用wenyan；图片同名可能碰撞；缺图只告警仍返回成功；data URL不证明微信粘贴成功。",
+    "evidence_level": "已读取的源码；非平台接口权限证明"
+  },
+  {
+    "id": "WX-02",
+    "source_alias": "用户提供的公众号工具压缩包",
+    "file": "scripts/draft.sh",
+    "lines": "完整文件",
+    "sha256": "a4f597ca2956e0b25697a538380b98927deec7c91bf5c37c030a6700c5224662",
+    "lesson": "manual路径在API预检前退出；写草稿需confirm-write；写后回查使用or true会掩盖回查失败。",
+    "evidence_level": "已读取的源码；非平台接口权限证明"
+  }
+]
