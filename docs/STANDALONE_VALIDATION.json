@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-21",
+  "skill": "wechat-article-publisher",
+  "scope": "独立目录结构、5项辅助脚本/迁移回归、扫描；非平台业务验收",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/validate_skills.py"
+      ],
+      "exit_code": 0,
+      "output": "Checked 1 skills: PASS\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output": "test_fake_pass (test_standalone.Standalone) ... ok\ntest_missing_article_image (test_standalone.Standalone) ... ok\ntest_relocated_clone (test_standalone.Standalone) ... ok\ntest_sensitive_gate (test_standalone.Standalone) ... ok\ntest_structure (test_standalone.Standalone) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.014s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/scan_public.py"
+      ],
+      "exit_code": 0,
+      "output": "Public scan: 16 files, PASS\n"
+    }
+  ]
+}

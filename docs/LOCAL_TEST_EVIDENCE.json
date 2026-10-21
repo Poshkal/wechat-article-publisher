@@ -1,0 +1,217 @@
+{
+  "date": "2026-10-21",
+  "scope": "本地离线；无生产写入",
+  "environment": {
+    "python": "Python 3.9.6",
+    "node": "v22.22.0",
+    "wenyan": "2.0.12"
+  },
+  "checks": [
+    {
+      "id": "qa-controller",
+      "command": [
+        "node",
+        "--test",
+        "tests/qa.test.js"
+      ],
+      "cwd_alias": "read-only historical project",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "PASS",
+      "scope": "实际页面控制器；API/wx mock",
+      "log_sha256": "e7a1c405686841a59035bac8806fc2631b16ca37ecb30e2e92b3b8634c04c496",
+      "summary": "6 tests / 6 pass / API and wx mocked"
+    },
+    {
+      "id": "shopify-js-syntax",
+      "command": [
+        "node",
+        "--check",
+        "assets/rosy-flowerwall-accessories.js"
+      ],
+      "cwd_alias": "read-only historical project",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "PASS",
+      "scope": "只验证历史源码语法",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "wechat-render",
+      "command": [
+        "node",
+        ".local-audit/wechat-render/scripts/build-manual.mjs",
+        ".local-audit/wechat-render/article.md",
+        ".local-audit/wechat-render/output"
+      ],
+      "cwd_alias": "library",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "PASS",
+      "scope": "真实本地排版器；合成稿和图片",
+      "log_sha256": "5d0a6b6b5eccc2d6a2ef6429c0175c6cd7f02c8e43f8989d9982caffdd03d9c9",
+      "summary": "已生成免认证导入包：.local-audit/wechat-render/output\n  article.html   自包含预览页（1 张正文图已内联）\n  images/        封面 + 1 张配图\n  说明.md        导入步骤与需人工调整项\n    - cover.png  0 KB\n  所有本地图片均已找到并内联"
+    },
+    {
+      "id": "wechat-package",
+      "command": [
+        "python3",
+        "scripts/check_article.py",
+        ".local-audit/wechat-render/output/article.html"
+      ],
+      "cwd_alias": "library",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "PASS",
+      "scope": "仅HTML包装",
+      "log_sha256": "ecb6df46ef36a4e6d6399b1217fee26f76aa0f616fcee396844f05926daacdf0",
+      "summary": "{\n  \"status\": \"PASS\",\n  \"scope\": \"local HTML packaging only\",\n  \"images\": 1,\n  \"errors\": []\n}"
+    },
+    {
+      "id": "wechat-missing-render",
+      "command": [
+        "node",
+        ".local-audit/wechat-render/scripts/build-manual.mjs",
+        ".local-audit/wechat-render/missing.md",
+        ".local-audit/wechat-render/missing-output"
+      ],
+      "cwd_alias": "library",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "PASS",
+      "scope": "原工具缺图仍exit0：证实需要额外门禁",
+      "log_sha256": "1d591e6bc02c294a80d9156e16ebb273cdafdf33329f08cb87128f1bbfb854c0"
+    },
+    {
+      "id": "wechat-missing-rejected",
+      "command": [
+        "python3",
+        "scripts/check_article.py",
+        ".local-audit/wechat-render/missing-output/article.html"
+      ],
+      "cwd_alias": "library",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "status": "PASS",
+      "scope": "预期exit1；负例被拒绝才PASS",
+      "log_sha256": "691635f83875d0f3d5f0bc54ed7f4e079166a8fe6e107b1724fca8098d30c873",
+      "summary": "{\n  \"status\": \"NEED FIX\",\n  \"scope\": \"local HTML packaging only\",\n  \"images\": 1,\n  \"errors\": [\n    \"image is not embedded; dependency needs review\"\n  ]\n}"
+    },
+    {
+      "id": "library-structure",
+      "command": [
+        "python3",
+        "scripts/validate_skills.py"
+      ],
+      "cwd_alias": "library",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "PASS",
+      "scope": "结构与链接，不证明业务",
+      "log_sha256": "d93a6f4f18a3f03bd13f9f39704261aea9c3c97b6b36c6b779172c50b514ca44",
+      "summary": "Checked 12 skills: PASS"
+    },
+    {
+      "id": "regression",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd_alias": "library",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "PASS",
+      "scope": "6项本地回归",
+      "log_sha256": "0f8cade9d7da9c2346fdc4b60b42b1cfd34c84e2b91763b93e4f666066010985",
+      "summary": "test_article_injection_rejected (test_checks.Checks) ... ok\ntest_article_local_success_and_missing_image (test_checks.Checks) ... ok\ntest_library_and_broken_reference (test_checks.Checks) ... ok\ntest_name_mismatch_and_missing_skill (test_checks.Checks) ... ok\ntest_qa_evidence_required (test_checks.Checks) ... ok\ntest_scanner_blocks_secret_privacy_and_binary (test_checks.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.030s\n\nOK"
+    },
+    {
+      "id": "public-scan",
+      "command": [
+        "python3",
+        "scripts/scan_public.py"
+      ],
+      "cwd_alias": "library",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "PASS",
+      "scope": "启发式扫描；另作人工审阅",
+      "log_sha256": "b264232b611967e182bf81ac095fbe56c73148e953522ce76e0aa5c1c8d85419",
+      "summary": "Public scan: 36 files, PASS"
+    },
+    {
+      "id": "official-skill-format",
+      "command": [
+        "python3",
+        "skill-creator/scripts/quick_validate.py",
+        "each skill"
+      ],
+      "scope": "官方随附校验器；仅格式，不证明业务",
+      "status": "PASS",
+      "exit_code": 0,
+      "skills": [
+        {
+          "name": "ai-product-launch-playbook",
+          "exit_code": 0
+        },
+        {
+          "name": "business-document-builder",
+          "exit_code": 0
+        },
+        {
+          "name": "codex-qa-gatekeeper",
+          "exit_code": 0
+        },
+        {
+          "name": "content-repurposing-studio",
+          "exit_code": 0
+        },
+        {
+          "name": "customer-support-copilot",
+          "exit_code": 0
+        },
+        {
+          "name": "ecommerce-automation-architect",
+          "exit_code": 0
+        },
+        {
+          "name": "ecommerce-growth-diagnostician",
+          "exit_code": 0
+        },
+        {
+          "name": "kol-collaboration-manager",
+          "exit_code": 0
+        },
+        {
+          "name": "shopify-cro-optimizer",
+          "exit_code": 0
+        },
+        {
+          "name": "shopify-safe-deployment",
+          "exit_code": 0
+        },
+        {
+          "name": "shopify-store-auditor",
+          "exit_code": 0
+        },
+        {
+          "name": "wechat-article-publisher",
+          "exit_code": 0
+        }
+      ]
+    }
+  ],
+  "not_verified": [
+    "微信导入/复制/手机预览/API/发布",
+    "公众号浏览器视觉",
+    "Shopify实时主题/Admin/预览交互/付款",
+    "其余9项业务端到端",
+    "GitHub Actions尚待实际运行"
+  ],
+  "iteration_note": "组装报告时曾因LOCAL_TEST_EVIDENCE.json尚未生成出现断链失败；补齐实际记录后重跑，结果见checks。"
+}
