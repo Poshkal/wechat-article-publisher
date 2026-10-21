@@ -143,6 +143,67 @@
       "scope": "启发式扫描；另作人工审阅",
       "log_sha256": "b264232b611967e182bf81ac095fbe56c73148e953522ce76e0aa5c1c8d85419",
       "summary": "Public scan: 36 files, PASS"
+    },
+    {
+      "id": "official-skill-format",
+      "command": [
+        "python3",
+        "skill-creator/scripts/quick_validate.py",
+        "each skill"
+      ],
+      "scope": "官方随附校验器；仅格式，不证明业务",
+      "status": "PASS",
+      "exit_code": 0,
+      "skills": [
+        {
+          "name": "ai-product-launch-playbook",
+          "exit_code": 0
+        },
+        {
+          "name": "business-document-builder",
+          "exit_code": 0
+        },
+        {
+          "name": "codex-qa-gatekeeper",
+          "exit_code": 0
+        },
+        {
+          "name": "content-repurposing-studio",
+          "exit_code": 0
+        },
+        {
+          "name": "customer-support-copilot",
+          "exit_code": 0
+        },
+        {
+          "name": "ecommerce-automation-architect",
+          "exit_code": 0
+        },
+        {
+          "name": "ecommerce-growth-diagnostician",
+          "exit_code": 0
+        },
+        {
+          "name": "kol-collaboration-manager",
+          "exit_code": 0
+        },
+        {
+          "name": "shopify-cro-optimizer",
+          "exit_code": 0
+        },
+        {
+          "name": "shopify-safe-deployment",
+          "exit_code": 0
+        },
+        {
+          "name": "shopify-store-auditor",
+          "exit_code": 0
+        },
+        {
+          "name": "wechat-article-publisher",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "not_verified": [

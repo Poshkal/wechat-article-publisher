@@ -46,7 +46,7 @@ def validate(root):
         name = fields.get('name', '')
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', name) or len(name) >= 64:
             errors.append(f'{label}: invalid name')
-        if name != path.parent.name or name in names:
+        if (not standalone and name != path.parent.name) or name in names:
             errors.append(f'{label}: name mismatch/duplicate')
         names.add(name)
         if not isinstance(fields.get('description'), str) or not fields.get('description', '').strip():

@@ -1,5 +1,6 @@
 import importlib.util
 import tempfile
+import shutil
 import unittest
 from pathlib import Path
 
@@ -14,6 +15,12 @@ def module(name):
 class Standalone(unittest.TestCase):
     def test_structure(self):
         self.assertFalse(module('validate_skills').validate(ROOT)[1])
+
+    def test_relocated_clone(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / 'arbitrary-clone-folder'
+            shutil.copytree(ROOT, target, ignore=shutil.ignore_patterns('.git', '__pycache__'))
+            self.assertFalse(module('validate_skills').validate(target)[1])
 
     def test_sensitive_gate(self):
         scan = module('scan_public')

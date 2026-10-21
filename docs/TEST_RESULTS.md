@@ -4,6 +4,8 @@
 
 ## 已执行
 
+另已执行 skill-creator 随附 quick_validate.py，12/12 返回 Skill is valid（exit 0）；此结果仅为格式验证。
+
 | 检查 | 结果 | 范围及限制 |
 |---|---|---|
 | 初版 `python3 scripts/validate_skills.py` | PASS，12个 | 旧脚本只检查部分标题/name/秘密正则，不能证明内容可用 |
